@@ -2,9 +2,11 @@
 
 ## Setup
 
+You can run the necessary tools (Kafka, Cassandra) using docker or any other way.
+
 ### Kafka
 
-Set up one node i.e. using docker:
+Set up one node, i.e. using docker:
 
 ```
 docker run -d -p 2181:2181 -p 9092:9092 --env ADVERTISED_HOST=`docker-machine ip \`docker-machine active\`` --env ADVERTISED_PORT=9092 spotify/kafka
@@ -17,7 +19,7 @@ docker exec -i -t `docker ps | grep spotify/kafka | awk ' { print $1 } '` /opt/k
 
 ### Cassandra
 
-Set up one node i.e. using docker:
+Set up one node, i.e. using docker:
 
 ```
 docker run -d -p 9042:9042 cassandra:2.2
@@ -26,9 +28,11 @@ docker run -d -p 9042:9042 cassandra:2.2
 ## Prepare Cassandra and Send Events
 
 Start sbt (executed in the root of this Git repository)
+This will start the system installation of sbt if present. Otherwise it will download the sbt-launcher jar into the sbt directory and will then launch sbt using the launcher jar.
 
 ```
-sbt
+chmod a+x sbt/sbt
+./sbt/sbt
 ```
 
 ### Initialize Cassandra
