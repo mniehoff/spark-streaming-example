@@ -1,5 +1,9 @@
 # spark-streaming-example #
 
+This repository contains example code for spark-streaming applications with window and state operations. The application will receive the data from a Kafka broker and will save the result in a Cassandra database.
+
+With the following commands the apps can be run on your local computer in Spark local mode (master,driver,worker,executors all in one jvm). To run this on a spark cluster you have to create an assembly jar and submit this to the cluster.
+
 ## Setup
 
 You can run the necessary tools (Kafka, Cassandra) using docker or any other way.
@@ -28,6 +32,7 @@ docker run -d -p 9042:9042 cassandra:2.2
 ## Prepare Cassandra and Send Events
 
 Start sbt (executed in the root of this Git repository)
+
 This will start the system installation of sbt if present. Otherwise it will download the sbt-launcher jar into the sbt directory and will then launch sbt using the launcher jar.
 
 ```
@@ -52,7 +57,10 @@ runMain de.codecentric.spark.streaming.example.KafkaEventPublisher <<yourKafkaHo
 
 Start another sbt session (executed in the root of this Git repository)
 
-### Run BillboardCharts Job (as in the Java Magazin)
+### Run BillboardCharts Job
+
+Generates BillboardCharts as described in the German Java Magazin
+
 ```
 runMain de.codecentric.spark.streaming.example.KafkaStreamingBillboard <<yourKafkaHost:9092>> albumDownloads <<yourCassandaHost>>
 ```

@@ -70,7 +70,7 @@ object KafkaEventPublisher {
         }
 
       Thread.sleep(200)
-      System.out.println("Sent")
+      System.out.println("Sent 50 Events to Kafka")
     }
   }
 }
